@@ -33,8 +33,15 @@ var _ = Describe("Ipaddr", func() {
 		_, testNet, _ := net.ParseCIDR("192.168.100.0/24")
 		ipStart := uint32(192<<24 + 168<<16 + 100<<8)
 		ipEnd := uint32(192<<24 + 168<<16 + 101<<8 - 1)
-		resultS, resultE := Net4To2Uint32(testNet)
+		resultS, resultE := Net4ToStartEndUint32(testNet)
 		Expect(ipStart).To(Equal(resultS))
 		Expect(ipEnd).To(Equal(resultE))
+	})
+	It("get host part of a net", func() {
+		testIP, testNet, _ := net.ParseCIDR("192.168.100.74/24")
+		testNet.IP = testIP
+		host, hostLen := GetHostUint32(testNet)
+		Expect(host).To(Equal(uint32(74)))
+		Expect(hostLen).To(Equal(uint32(8)))
 	})
 })
