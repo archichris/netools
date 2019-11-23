@@ -16,7 +16,7 @@ var _ = Describe("Device", func() {
 	It("get net of the given interface", func() {
 
 		iface, _ := net.InterfaceByName("eth0")
-		n, _ := GetIfaceIP4Addr(iface)
+		n, _ := GetIfaceIP4Net(iface)
 		Expect(n.IP.String()).To(Equal(localIP))
 		Expect(n.Mask.String()).To(Equal(localMask))
 	})

@@ -73,7 +73,7 @@ func GetIfaceAddrs(iface *net.Interface) ([]netlink.Addr, error) {
 	return netlink.AddrList(link, syscall.AF_INET)
 }
 
-func GetIfaceIP4Addr(iface *net.Interface) (*net.IPNet, error) {
+func GetIfaceIP4Net(iface *net.Interface) (*net.IPNet, error) {
 	addrs, err := GetIfaceAddrs(iface)
 	if err != nil {
 		return nil, err
