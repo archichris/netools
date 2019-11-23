@@ -19,12 +19,10 @@ import (
 	"net"
 	"syscall"
 
-	"github.com/intel/multus-cni/logging"
 	"github.com/vishvananda/netlink"
 )
 
 func AddFDB(index int, mac net.HardwareAddr, ip net.IP) error {
-	logging.Debugf("calling NeighAppend to %v: %v, %v", index, mac, ip)
 	return netlink.NeighAppend(&netlink.Neigh{
 		LinkIndex:    index,
 		State:        netlink.NUD_PERMANENT,
@@ -36,7 +34,6 @@ func AddFDB(index int, mac net.HardwareAddr, ip net.IP) error {
 }
 
 func DelFDB(index int, mac net.HardwareAddr, ip net.IP) error {
-	logging.Debugf("calling DelFDB to %v: %v, %v", index, mac, ip)
 	return netlink.NeighDel(&netlink.Neigh{
 		LinkIndex:    index,
 		Family:       syscall.AF_BRIDGE,
@@ -47,7 +44,6 @@ func DelFDB(index int, mac net.HardwareAddr, ip net.IP) error {
 }
 
 func AddARP(index int, mac net.HardwareAddr, ip net.IP) error {
-	logging.Debugf("calling AddARP to %v: %v, %v", index, mac, ip)
 	return netlink.NeighSet(&netlink.Neigh{
 		LinkIndex:    index,
 		State:        netlink.NUD_PERMANENT,
@@ -58,7 +54,6 @@ func AddARP(index int, mac net.HardwareAddr, ip net.IP) error {
 }
 
 func DelARP(index int, mac net.HardwareAddr, ip net.IP) error {
-	logging.Debugf("calling DelARP to %v: %v, %v", index, mac, ip)
 	return netlink.NeighDel(&netlink.Neigh{
 		LinkIndex:    index,
 		State:        netlink.NUD_PERMANENT,
