@@ -1,3 +1,7 @@
+github.com/archichris/netools/dev v0.0.0-20191123105530-01be2e9abce0 h1:hUiMLxcoDmAB0NGFyduCis+wzBqcrT9/HKf4dU2Qenk=
+github.com/archichris/netools/dev v0.0.0-20191123105530-01be2e9abce0/go.mod h1:XXic1b/SLVv5Hqu2dwDivkgRyNP3iHYjIqUbeGYO+hg=
+github.com/archichris/netools/ipaddr v0.0.0-20191123105530-01be2e9abce0 h1:j45U2aG7kyzOqljm9EvmvgLpUuOcRWGdvx1gU+8lvx0=
+github.com/archichris/netools/ipaddr v0.0.0-20191123105530-01be2e9abce0/go.mod h1:RC+V6SmwdkQpA/2HvcnbAwvNTN+GJ9o3T8WlZ6G/iHc=
 github.com/fsnotify/fsnotify v1.4.7/go.mod h1:jwhsz4b93w/PPRr/qN1Yymfu8t87LnFCMoQvtojpjFo=
 github.com/golang/protobuf v1.2.0/go.mod h1:6lQm79b+lXiMfvg/cZm0SGofjICqVBUtrP5yJMmIC1U=
 github.com/hpcloud/tail v1.0.0 h1:nfCOvKYfkgYP8hkirhJocXT2+zOD8yUNjXaWfTlyFKI=

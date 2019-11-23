@@ -73,14 +73,14 @@ func GetIfaceAddrs(iface *net.Interface) ([]netlink.Addr, error) {
 	return netlink.AddrList(link, syscall.AF_INET)
 }
 
-func GetIfaceIP4Addr(iface *net.Interface) (net.IP, error) {
+func GetIfaceIP4Addr(iface *net.Interface) (*net.IPNet, error) {
 	addrs, err := GetIfaceAddrs(iface)
 	if err != nil {
 		return nil, err
 	}
 
 	// prefer non link-local addr
-	var ll net.IP
+	var ll *net.IPNet
 
 	for _, addr := range addrs {
 		if addr.IP.To4() == nil {
@@ -88,11 +88,11 @@ func GetIfaceIP4Addr(iface *net.Interface) (net.IP, error) {
 		}
 
 		if addr.IP.IsGlobalUnicast() {
-			return addr.IP, nil
+			return &net.IPNet{IP: addr.IP, Mask: addr.Mask}, nil
 		}
 
 		if addr.IP.IsLinkLocalUnicast() {
-			ll = addr.IP
+			ll = &net.IPNet{IP: addr.IP, Mask: addr.Mask}
 		}
 	}
 
